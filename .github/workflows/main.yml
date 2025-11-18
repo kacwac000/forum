@@ -8,7 +8,7 @@ on:
 
 jobs:
   php_lint:
-    name: Sprawdzenie składni PHP
+    name: Sprawdzenie składni
     runs-on: ubuntu-latest
 
     steps:
@@ -24,12 +24,11 @@ jobs:
         run: |
           find . -type f -name "*.php" -print0 | xargs -0 -n1 php -l
 
-  # Jeśli nie masz testów — ta część nie wykona się i możesz ją pominąć.
   php_tests:
     name: PHPUnit (jeśli dodasz testy)
     runs-on: ubuntu-latest
     needs: php_lint
-    if: false  # zmień na "true", gdy dodasz testy
+    if: false  
 
     steps:
       - name: Checkout
